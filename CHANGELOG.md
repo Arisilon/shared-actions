@@ -7,10 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
-### [1.0.1] - Unreleased
+### [1.0.1] - 2025-02-11
 
 - Changed
-  - Migrated repo to Arisilon organization. (GitHub #24)
+  - Migrated repo to Arisilon organization. (GitHub #1)
+  - Updated remote actions to latest versions. (GitHub #2)
 
 ## Release History
 
