@@ -42,12 +42,12 @@ jobs:
           cache: "pip"
       - name: Install vjer
         run: pip install vjer
-        if: ${{ ! inputs.vjer-local}}
+        if: ${{ ! inputs.vjer-local }}
       - name: Install local vjer
         run: pip install .
         if: inputs.vjer-local
       - name: Run ${{ inputs.action }}
-        run: vjer ${{ inputs.action}}
+        run: vjer ${{ inputs.action }}
         env:
           VJER_USE_FLIT: ${{ inputs.use-flit }}
           VJER_ENV: ${{ inputs.vjer-env }}
