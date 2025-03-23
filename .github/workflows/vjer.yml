@@ -14,8 +14,8 @@ on:
         type: string
       use-flit:
         required: false
-        type: boolean
-        default: false
+        type: string
+        default: ''
       vjer-env:
         required: false
         type: string
