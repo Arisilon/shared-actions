@@ -28,6 +28,8 @@ on:
 env:
   ARTIFACTS_DIR: artifacts
   UNIT_TEST_DIR: test_results
+  VJER_BUILD_NUM: ${{ github.run_id }}
+
 
 jobs:
   vjer:
