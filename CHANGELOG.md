@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [2.0.0] - Unreleased
+
+- Changed
+  - Update for new Vjer usage.
+
+## Release History
+
 ### [1.0.2] - 2025-03-23
 
 - Changed
   - Fix VJER_USE_FLIT usage.
-
-## Release History
 
 ### [1.0.1] - 2025-02-11
 

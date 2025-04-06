@@ -12,7 +12,7 @@ on:
       python-version:
         required: true
         type: string
-      use-flit:
+      pyproject-build:
         required: false
         type: string
         default: ''
@@ -29,7 +29,6 @@ env:
   ARTIFACTS_DIR: artifacts
   UNIT_TEST_DIR: test_results
   VJER_BUILD_NUM: ${{ github.run_id }}
-
 
 jobs:
   vjer:
@@ -51,8 +50,8 @@ jobs:
       - name: Run ${{ inputs.action }}
         run: vjer ${{ inputs.action }}
         env:
-          VJER_USE_FLIT: ${{ inputs.use-flit }}
           VJER_ENV: ${{ inputs.vjer-env }}
+          VJER_PYPROJECT_BUILD: ${{ inputs.pyproject-build }}
       - name: Upload unit test results
         uses: actions/upload-artifact@v4
         with:
@@ -65,3 +64,5 @@ jobs:
           name: ${{ env.ARTIFACTS_DIR }}
           path: ${{ env.ARTIFACTS_DIR }}
         if: inputs.action == 'build'
+
+# cSpell:ignore pyproject
