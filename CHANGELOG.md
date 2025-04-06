@@ -7,10 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
-### [2.0.0] - Unreleased
+### [2.0.0] - 2025-04-06
 
 - Changed
-  - Update for new Vjer usage.
+  - Update for new Vjer usage. (GitHub #4)
 
 ## Release History
 
