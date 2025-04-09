@@ -3,6 +3,7 @@ name: Shared Vjer Action
 on:
   workflow_call:
     inputs:
+      # required inputs
       action:
         required: true
         type: string
@@ -12,18 +13,17 @@ on:
       python-version:
         required: true
         type: string
+      # optional inputs
       pyproject-build:
-        required: false
         type: string
-        default: ''
       vjer-env:
-        required: false
         type: string
         default: development
       vjer-local:
-        required: false
         type: boolean
         default: false
+      vjer-version:
+        type: string
 
 env:
   ARTIFACTS_DIR: artifacts
@@ -42,7 +42,9 @@ jobs:
           python-version: ${{ inputs.python-version }}
           cache: "pip"
       - name: Install vjer
-        run: pip install vjer
+        run: |
+          if [[ -n "${{ inputs.vjer-version }}" ]]; then install_version="==${{ inputs.vjer-version }}"; fi
+          pip install vjer$install_version
         if: ${{ ! inputs.vjer-local }}
       - name: Install local vjer
         run: pip install .
