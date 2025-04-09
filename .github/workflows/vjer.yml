@@ -16,6 +16,9 @@ on:
       # optional inputs
       pyproject-build:
         type: string
+      use-pypi-test:
+        type: boolean
+        default: false
       vjer-env:
         type: string
         default: development
@@ -44,7 +47,8 @@ jobs:
       - name: Install vjer
         run: |
           if [[ -n "${{ inputs.vjer-version }}" ]]; then install_version="==${{ inputs.vjer-version }}"; fi
-          pip install vjer$install_version
+          if [[ "${{ inputs.use-pypi-test }}" == "true" ]]; then pypi_test_option="--index-url https://test.pypi.org/simple/"; fi
+          pip install $pypi_test_option vjer$install_version
         if: ${{ ! inputs.vjer-local }}
       - name: Install local vjer
         run: pip install .
