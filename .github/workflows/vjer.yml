@@ -47,7 +47,7 @@ jobs:
       - name: Install vjer
         run: |
           if [[ -n "${{ inputs.vjer-version }}" ]]; then install_version="==${{ inputs.vjer-version }}"; fi
-          if [[ "${{ inputs.use-pypi-test }}" == "true" ]]; then pypi_test_option="--index-url https://test.pypi.org/simple/"; fi
+          if [[ "${{ inputs.use-pypi-test }}" == "true" ]]; then pypi_test_option="--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple"; fi
           pip install $pypi_test_option vjer$install_version
         if: ${{ ! inputs.vjer-local }}
       - name: Install local vjer
