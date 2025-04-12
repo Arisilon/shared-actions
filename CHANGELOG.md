@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
-### [2.1.0] - Unreleased
+### [2.1.0] - 2025-04-12
 
 - Added
   - Added support for specifying vjer version including PyPi test. (GitHub #5)
