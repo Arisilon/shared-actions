@@ -35,35 +35,35 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
       - name: Install local vjer
-        run: pip install $ARTIFACTS_DIR/*.whl
         if: inputs.use-local-vjer
+        run: pip install $ARTIFACTS_DIR/*.whl
       - name: Install vjer
-        run: pip install vjer
         if: ${{ ! inputs.use-local-vjer }}
+        run: pip install vjer
       - name: Prepare Git
         run: |
           git config user.name "${{ github.triggering_actor }}"
           git config user.email "${{ github.triggering_actor }}@users.noreply.github.com"
           git pull
       - name: Publish to Test PyPi
+        if: inputs.environment == 'pre_release'
         uses: pypa/gh-action-pypi-publish@v1.12.4
         with:
           repository-url: https://test.pypi.org/legacy/
           packages-dir: ${{ env.ARTIFACTS_DIR }}
           verbose: true
-        if: inputs.environment == 'pre_release'
       - name: Run post-publish steps
         run: vjer ${{ inputs.environment }}
       - name: Publish to PyPi
+        if: inputs.environment == 'release'
         uses: pypa/gh-action-pypi-publish@v1.12.4
         with:
           packages-dir: ${{ env.ARTIFACTS_DIR }}
-        if: inputs.environment == 'release'
       - name: Upload released artifacts
+        if: inputs.environment == 'release'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ARTIFACTS_DIR }}
           path: ${{ env.ARTIFACTS_DIR }}
-        if: inputs.environment == 'release'
 
 # cSpell:ignore pypa noreply

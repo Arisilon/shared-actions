@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [2.2.0] - 2025-04-13
+
+- Added
+  - Added support for enabling git commit during action. (GitHub #6)
+
+## Release History
+
 ### [2.1.0] - 2025-04-12
 
 - Added
   - Added support for specifying vjer version including PyPi test. (GitHub #5)
-
-## Release History
 
 ### [2.0.0] - 2025-04-06
 

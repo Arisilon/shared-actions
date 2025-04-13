@@ -38,10 +38,10 @@ jobs:
           name: ${{ env.ARTIFACTS_DIR }}
           path: ${{ env.ARTIFACTS_DIR }}
       - name: Install Python module for testing
-        run: pip install $ARTIFACTS_DIR/*.whl
         if: inputs.os != 'windows-latest'
+        run: pip install $ARTIFACTS_DIR/*.whl
       - name: Install Python module for testing
-        run: pip install (Get-Item $env:ARTIFACTS_DIR\*.whl)
         if: inputs.os == 'windows-latest'
+        run: pip install (Get-Item $env:ARTIFACTS_DIR\*.whl)
       - name: Test installed module
         run: cd ${{ inputs.test-dir }} && ${{ inputs.test-action }}
