@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Added
   - Added support for enabling git commit during action. (GitHub #6)
+  - Added support for passing in the build number. (GitHub #7)
 
 ## Release History
 

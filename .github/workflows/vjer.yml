@@ -14,6 +14,9 @@ on:
         required: true
         type: string
       # optional inputs
+      build-num:
+        type: string
+        default: ${{ github.run_id }}
       enable-git-commit:
         type: boolean
         default: false
@@ -34,7 +37,6 @@ on:
 env:
   ARTIFACTS_DIR: artifacts
   UNIT_TEST_DIR: test_results
-  VJER_BUILD_NUM: ${{ github.run_id }}
 
 jobs:
   vjer:
@@ -66,10 +68,11 @@ jobs:
       - name: Run ${{ inputs.action }}
         run: vjer ${{ inputs.action }}
         env:
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          VJER_BUILD_NUM: ${{ inputs.build-num }}
           VJER_ENV: ${{ inputs.vjer-env }}
           VJER_PYPROJECT_BUILD: ${{ inputs.pyproject-build }}
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Upload unit test results
         if: inputs.action == 'test'
         uses: actions/upload-artifact@v4
