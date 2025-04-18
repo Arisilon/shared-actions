@@ -18,5 +18,6 @@ This is the procedure for releasing the shared actions
 
 1. Label the issues as res::complete and mark as "Completed".
 1. Close the Milestone.
+1. Create a Release.
 
 <!--- cSpell:ignore vjer virtualenv -->
