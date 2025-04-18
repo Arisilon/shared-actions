@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
-### [2.2.0] - 2025-04-13
+### [2.2.0] - 2025-04-17
 
 - Added
   - Added support for enabling git commit during action. (GitHub #6)
