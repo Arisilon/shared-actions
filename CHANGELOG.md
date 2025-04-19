@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [2.3.0] - Unreleased
+
+- Added
+  - Added support for test PyPi on local Vjer install . (GitHub #9)
+
+## Release History
+
 ### [2.2.1] - 2025-04-18
 
 - Changed
   - Fixed Vjer install on Windows. (GitHub #8)
-
-## Release History
 
 ### [2.2.0] - 2025-04-17
 
