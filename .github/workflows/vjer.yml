@@ -58,8 +58,8 @@ jobs:
       - name: Install vjer on Windows
         if: ${{ (! inputs.vjer-local) && (inputs.os == 'windows-latest') }}
         run: |
-          if (${{ inputs.vjer-version }} -ne "") { $install_version = "==$env:inputs_vjer_version" }
-          if (${{ inputs.use-pypi-test }} -eq "true") { $pypi_test_option = "--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple" }
+          if ("${{ inputs.vjer-version }}" -ne "") { $install_version = "==$env:inputs_vjer_version" }
+          if ("${{ inputs.use-pypi-test }}" -eq "true") { $pypi_test_option = "--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple" }
           pip install $pypi_test_option vjer$install_version --use-pep517 --prefer-binary
       - name: Install local vjer
         if: inputs.vjer-local
