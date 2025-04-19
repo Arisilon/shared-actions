@@ -44,40 +44,20 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+
       - name: Setup Python ${{ inputs.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ inputs.python-version }}
           cache: "pip"
-      - name: Install vjer on UNIX
-        if: ${{ (! inputs.vjer-local) && (inputs.os != 'windows-latest') }}
-        run: |
-          if [[ -n "${{ inputs.vjer-version }}" ]]; then install_version="==${{ inputs.vjer-version }}"; fi
-          if [[ "${{ inputs.use-pypi-test }}" == "true" ]]; then pypi_test_option="--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple"; fi
-          pip install $pypi_test_option vjer$install_version
-      - name: Install vjer on Windows
-        if: ${{ (! inputs.vjer-local) && (inputs.os == 'windows-latest') }}
-        run: |
-          if ("${{ inputs.vjer-version }}" -ne "") { $install_version = "==$env:inputs_vjer_version" }
-          if ("${{ inputs.use-pypi-test }}" -eq "true") { $pypi_test_option = "--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple" }
-          pip install $pypi_test_option vjer$install_version --use-pep517 --prefer-binary
-      - name: Install local vjer on UNIX
-        if: inputs.vjer-local && (inputs.os != 'windows-latest')
-        run: |
-          if [[ "${{ inputs.use-pypi-test }}" == "true" ]]; then pypi_test_option="--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple"; fi
-          pip install $pypi_test_option .
-      - name: Install local vjer on Windows
-        if: inputs.vjer-local && (inputs.os == 'windows-latest')
-        run: |
-          if ("${{ inputs.use-pypi-test }}" -eq "true") { $pypi_test_option = "--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple" }
-          pip install $pypi_test_option . --use-pep517
-      - name: Enable git commit
-        if: inputs.enable-git-commit
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global --add safe.directory $GITHUB_WORKSPACE
-          git pull
+
+      - name: Install Vjer
+        uses: ./.github/actions/install-vjer
+        with:
+          use-pypi-test: ${{ inputs.use-pypi-test }}
+          vjer-local: ${{ inputs.vjer-local }}
+          vjer-version: ${{ inputs.vjer-version }}
+
       - name: Run ${{ inputs.action }}
         run: vjer ${{ inputs.action }}
         env:
@@ -86,12 +66,14 @@ jobs:
           VJER_BUILD_NUM: ${{ inputs.build-num }}
           VJER_ENV: ${{ inputs.vjer-env }}
           VJER_PYPROJECT_BUILD: ${{ inputs.pyproject-build }}
+
       - name: Upload unit test results
         if: inputs.action == 'test'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.UNIT_TEST_DIR }}-${{ inputs.os }}-${{ inputs.python-version }}
           path: ${{ env.UNIT_TEST_DIR }}
+
       - name: Upload artifacts
         if: inputs.action == 'build'
         uses: actions/upload-artifact@v4
