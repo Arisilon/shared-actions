@@ -65,12 +65,12 @@ jobs:
         if: inputs.vjer-local && (inputs.os != 'windows-latest')
         run: |
           if [[ "${{ inputs.use-pypi-test }}" == "true" ]]; then pypi_test_option="--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple"; fi
-          pip install . $pypi_test_option
+          pip install $pypi_test_option .
       - name: Install local vjer on Windows
         if: inputs.vjer-local && (inputs.os == 'windows-latest')
         run: |
           if ("${{ inputs.use-pypi-test }}" -eq "true") { $pypi_test_option = "--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple" }
-          pip install . $pypi_test_option
+          pip install $pypi_test_option . --use-pep517
       - name: Enable git commit
         if: inputs.enable-git-commit
         run: |
