@@ -1,18 +1,19 @@
 name: Install Vjer
 description: Installs the Vjer CI/CD tool
 inputs:
+  use-local:
+    description: Use local Vjer for the action
+    default: "false"
   use-pypi-test:
     description: Use Test PyPi for the action
     default: "false"
-  vjer-local:
-    description: Use local Vjer for the action
-    default: "false"
-  vjer-version:
+  version:
     description: Version of Vjer to use for the action
+    default: "latest"
 
 runs:
-  using: "composite"
+  using: composite
   steps:
     - name: Install Vjer
-      run: python ${{ github.action_path }}/action.py --use-pypi-test="${{ inputs.use-pypi-test }}" --vjer-local="${{ inputs.vjer-local }}" --vjer-version="${{ inputs.vjer-version }}"
       shell: bash
+      run: python "${{ github.action_path }}/action.py" "${{ inputs.version }}" "${{ inputs.use-local }}" "${{ inputs.use-pypi-test }}"

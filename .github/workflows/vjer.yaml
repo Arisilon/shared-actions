@@ -33,6 +33,7 @@ on:
         default: false
       vjer-version:
         type: string
+        default: latest
 
 env:
   ARTIFACTS_DIR: artifacts
@@ -55,8 +56,8 @@ jobs:
         uses: arisilon/shared-actions/.github/actions/install-vjer@feature/vjer-action
         with:
           use-pypi-test: ${{ inputs.use-pypi-test }}
-          vjer-local: ${{ inputs.vjer-local }}
-          vjer-version: ${{ inputs.vjer-version }}
+          use-local: ${{ inputs.vjer-local }}
+          version: ${{ inputs.vjer-version }}
 
       - name: Run ${{ inputs.action }}
         run: vjer ${{ inputs.action }}
