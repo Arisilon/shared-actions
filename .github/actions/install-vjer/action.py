@@ -1,6 +1,6 @@
 """Program to install Vjer from PyPI or a local directory."""
 from argparse import ArgumentParser
-from subprocess import check_output
+from subprocess import check_call
 
 
 def main() -> None:
@@ -15,12 +15,12 @@ def main() -> None:
     install_version = f'=={args.vjer_version}' if args.vjer_version else ''
     install_location = '.' if bool(args.vjer_local) else 'vjer'
     print(['pip', 'install', '--no-cache-dir',
-                  pypi_test_option,
-                  f'{install_location}{install_version}'])
-    check_output(['pip', 'install', '--no-cache-dir',
-                  pypi_test_option,
-                  f'{install_location}{install_version}'],
-                 shell=True)
+           pypi_test_option,
+           f'{install_location}{install_version}'])
+    check_call(['pip', 'install', '--no-cache-dir',
+                pypi_test_option,
+                f'{install_location}{install_version}'],
+               shell=True)
 
 
 if __name__ == '__main__':
