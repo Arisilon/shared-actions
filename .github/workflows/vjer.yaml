@@ -52,7 +52,7 @@ jobs:
           cache: "pip"
 
       - name: Install Vjer
-        uses: ./actions/install-vjer
+        uses: arisilon/shared-actions/.github/actions/install-vjer@feature/vjer-action
         with:
           use-pypi-test: ${{ inputs.use-pypi-test }}
           vjer-local: ${{ inputs.vjer-local }}
