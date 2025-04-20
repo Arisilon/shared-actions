@@ -2,21 +2,21 @@ name: Test Greeting
 
 on:
     workflow_call:
+        inputs:
+            os:
+                required: true
+                type: string
+            name:
+                required: true
+                type: string
 
 jobs:
   greet:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-            - ubuntu-latest
-            - windows-latest
-            - macos-latest
-
+    runs-on: ${{ inputs.os }}
     steps:
       - uses: actions/checkout@v4
 
       - name: Say hello
         uses: arisilon/shared-actions/.github/actions/greet@feature/vjer-action
         with:
-          name: "Ada Lovelace"
+          name: ${{ inputs.name }}
