@@ -14,7 +14,10 @@ def main() -> None:
     pypi_test_option = '--index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple' if bool(args.use_pypi_test) else ''  # noqa: E501
     install_version = f'=={args.vjer_version}' if args.vjer_version else ''
     install_location = '.' if bool(args.vjer_local) else 'vjer'
-    check_output(['pip', 'install', '--quiet', '--no-cache-dir',
+    print(['pip', 'install', '--no-cache-dir',
+                  pypi_test_option,
+                  f'{install_location}{install_version}'])
+    check_output(['pip', 'install', '--no-cache-dir',
                   pypi_test_option,
                   f'{install_location}{install_version}'],
                  shell=True)
