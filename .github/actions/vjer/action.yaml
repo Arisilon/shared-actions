@@ -1,0 +1,77 @@
+name: Run Vjer
+description: Runs the Vjer CI/CD tool
+inputs:
+  # required inputs
+  action:
+    description: The Vjer action to run
+    required: true
+  os:
+    description: The OS to run the action on
+    required: true
+  python-version:
+    description: The Python version to use
+    required: true
+  # optional inputs
+  build-num:
+    description: The build number to use for the action
+    default: ${{ github.run_id }}
+  enable-git-commit:
+    description: Enable git commit for the action
+    default: "false"
+  pyproject-build:
+    description: If this is a pyproject project
+    default: "false"
+  use-pypi-test:
+    description: Use Test PyPi for the action
+    default: "false"
+  vjer-env:
+    description: The Vjer environment to use
+    default: development
+  vjer-local:
+    description: Use local Vjer for the action
+    default: "false"
+  vjer-version:
+    description: Version of Vjer to use for the action
+    default: latest
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    - name: Setup Python ${{ inputs.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+        cache: "pip"
+
+    - name: Install Vjer
+      shell: bash
+      run: python "${{ github.action_path }}/action.py" "${{ inputs.vjer-version }}" "${{ inputs.vjer-local }}" "${{ inputs.use-pypi-test }}"
+
+    - name: Run ${{ inputs.action }}
+      shell: bash
+      run: vjer ${{ inputs.action }}
+      env:
+        DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        VJER_BUILD_NUM: ${{ inputs.build-num }}
+        VJER_ENV: ${{ inputs.vjer-env }}
+        VJER_PYPROJECT_BUILD: ${{ inputs.pyproject-build }}
+
+    - name: Upload unit test results
+      if: inputs.action == 'test'
+      uses: actions/upload-artifact@v4
+      with:
+        name: test_results-${{ inputs.os }}-${{ inputs.python-version }}
+        path: test_results
+
+    - name: Upload artifacts
+      if: inputs.action == 'build'
+      uses: actions/upload-artifact@v4
+      with:
+        name: artifacts
+        path: artifacts
+
+# cSpell:ignore pyproject dockerhub
