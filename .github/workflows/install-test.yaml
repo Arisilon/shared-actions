@@ -3,6 +3,7 @@ name: Shared Install Test Action
 on:
   workflow_call:
     inputs:
+      # required inputs
       os:
         required: true
         type: string
@@ -12,10 +13,15 @@ on:
       test-action:
         required: true
         type: string
+      # optional inputs
       test-dir:
         required: false
         type: string
         default: .
+      use-pypi-test:
+        required: false
+        type: boolean
+        default: false
 
 env:
   ARTIFACTS_DIR: artifacts
@@ -27,21 +33,30 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+
       - name: Setup Python ${{ inputs.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ inputs.python-version }}
           cache: "pip"
+
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           name: ${{ env.ARTIFACTS_DIR }}
           path: ${{ env.ARTIFACTS_DIR }}
+
       - name: Install Python module for testing
         if: inputs.os != 'windows-latest'
-        run: pip install $ARTIFACTS_DIR/*.whl
+        run: |
+          if [[ "${{ inputs.use-pypi-test }}" == "true" ]]; then pypi_install_arg="--extra-index-url https://test.pypi.org/simple"; fi
+          pip install $pypi_install_arg $ARTIFACTS_DIR/*.whl
+
       - name: Install Python module for testing
         if: inputs.os == 'windows-latest'
-        run: pip install (Get-Item $env:ARTIFACTS_DIR\*.whl)
+        run: |
+          if (${{ inputs.use-pypi-test }} -eq 'true') { $pypi_install_arg = '--extra-index-url https://test.pypi.org/simple' }
+          pip install $pypi_install_arg (Get-Item $env:ARTIFACTS_DIR\*.whl)
+
       - name: Test installed module
         run: cd ${{ inputs.test-dir }} && ${{ inputs.test-action }}
