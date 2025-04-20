@@ -12,11 +12,11 @@ def main() -> None:
     args = parser.parse_args()
 
     install_version = f'=={args.vjer_version}' if args.vjer_version else ''
-    pip_command = ['pip', 'install', '--no-cache-dir',
-                   '.' if bool(args.vjer_local) else f'vjer{install_version}']
+    pip_command = ['pip', 'install', '--no-cache-dir']
     if bool(args.use_pypi_test):
         pip_command += ['--index-url', 'https://test.pypi.org/simple/',
                         '--extra-index-url', 'https://pypi.org/simple']
+    pip_command += ['.' if bool(args.vjer_local) else f'vjer{install_version}']
     print(pip_command)
     check_call(pip_command, shell=True)
 
