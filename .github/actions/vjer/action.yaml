@@ -15,6 +15,10 @@ inputs:
   build-num:
     description: The build number to use for the action
     default: ${{ github.run_id }}
+  dockerhub-token:
+    description: The DockerHub token to use for the action
+  dockerhub-username:
+    description: The DockerHub username to use for the action
   enable-git-commit:
     description: Enable git commit for the action
     default: "false"
@@ -50,25 +54,34 @@ runs:
       shell: bash
       run: python "${{ github.action_path }}/action.py" "${{ inputs.vjer-version }}" "${{ inputs.vjer-local }}" "${{ inputs.use-pypi-test }}"
 
+    - name: Enable git commit
+      shell: bash
+      if: inputs.enable-git-commit == "true"
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+        git config --global --add safe.directory $GITHUB_WORKSPACE
+        git pull
+
     - name: Run ${{ inputs.action }}
       shell: bash
       run: vjer ${{ inputs.action }}
       env:
-        DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_TOKEN: ${{ inputs.dockerhub-token }}
+        DOCKERHUB_USERNAME: ${{ inputs.dockerhub-username }}
         VJER_BUILD_NUM: ${{ inputs.build-num }}
         VJER_ENV: ${{ inputs.vjer-env }}
         VJER_PYPROJECT_BUILD: ${{ inputs.pyproject-build }}
 
     - name: Upload unit test results
-      if: inputs.action == 'test'
+      if: inputs.action == "test"
       uses: actions/upload-artifact@v4
       with:
         name: test_results-${{ inputs.os }}-${{ inputs.python-version }}
         path: test_results
 
     - name: Upload artifacts
-      if: inputs.action == 'build'
+      if: inputs.action == "build"
       uses: actions/upload-artifact@v4
       with:
         name: artifacts
