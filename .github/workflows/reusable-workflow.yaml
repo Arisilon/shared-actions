@@ -1,0 +1,19 @@
+name: Reusable Greet Workflow
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Say Hello
+        uses: ./github/actions/greet
+        with:
+          name: ${{ inputs.name }}
