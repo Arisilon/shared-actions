@@ -18,7 +18,7 @@ def main() -> None:
                         '--extra-index-url', 'https://pypi.org/simple']
     pip_command += ['.' if bool(args.vjer_local) else f'vjer{install_version}']
     print(pip_command)
-    check_call(pip_command, shell=True)
+    check_call(pip_command)
 
 
 if __name__ == '__main__':
