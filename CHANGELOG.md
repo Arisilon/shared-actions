@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
-### [2.3.0] - Unreleased
+### [3.0.0] - Unreleased
 
 - Added
-  - Added support for test PyPi on local Vjer install . (GitHub #9)
+  - Added support for test PyPi on local Vjer install. (GitHub #9)
+
+- Changed
+  - Converted vjer from a workflow to an action. (GitHub #10)
 
 ## Release History
 
