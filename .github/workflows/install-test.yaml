@@ -55,7 +55,7 @@ jobs:
       - name: Install Python module for testing
         if: inputs.os == 'windows-latest'
         run: |
-          if (${{ inputs.use-pypi-test }} -eq 'true') { $pypi_install_arg = '--extra-index-url https://test.pypi.org/simple' }
+          if ('${{ inputs.use-pypi-test }}' -eq 'true') { $pypi_install_arg = '--extra-index-url https://test.pypi.org/simple' }
           pip install $pypi_install_arg (Get-Item $env:ARTIFACTS_DIR\*.whl)
 
       - name: Test installed module
