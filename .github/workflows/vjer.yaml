@@ -52,7 +52,7 @@ jobs:
           cache: "pip"
 
       - name: Install Vjer
-        uses: ./.github/actions/install-vjer
+        uses: ./actions/install-vjer
         with:
           use-pypi-test: ${{ inputs.use-pypi-test }}
           vjer-local: ${{ inputs.vjer-local }}
