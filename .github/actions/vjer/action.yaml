@@ -44,6 +44,10 @@ runs:
     - name: Checkout source
       uses: actions/checkout@v4
 
+    - name: Download artifacts
+      if: inputs.action == 'pre_release' || inputs.action == 'release'
+      uses: actions/download-artifact@v4
+
     - name: Setup Python ${{ inputs.python-version }}
       uses: actions/setup-python@v5
       with:
