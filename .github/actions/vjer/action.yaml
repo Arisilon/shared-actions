@@ -21,9 +21,6 @@ inputs:
     description: The DockerHub username to use for the action
   enable-git-commit:
     description: Enable git commit for the action
-    default: "false"
-  git-token:
-    description: A token to use during checkout
   pypi_token:
     description: The PyPi upload token
   pyproject-build:
@@ -48,7 +45,7 @@ runs:
     - name: Checkout source
       uses: actions/checkout@v4
       with:
-        token: ${{ intputs.git-token }}
+        token: ${{ intputs.enable-git-commit }}
 
     - name: Download artifacts
       if: inputs.action == 'pre_release' || inputs.action == 'release'
@@ -66,7 +63,7 @@ runs:
 
     - name: Enable git commit
       shell: bash
-      if: inputs.enable-git-commit == 'true'
+      if: inputs.enable-git-commit != ''
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
