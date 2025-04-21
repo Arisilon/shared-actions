@@ -22,6 +22,8 @@ inputs:
   enable-git-commit:
     description: Enable git commit for the action
     default: "false"
+  pypi_token:
+    description: The PyPi upload token
   pyproject-build:
     description: If this is a pyproject project
     default: "false"
@@ -73,6 +75,7 @@ runs:
       env:
         DOCKERHUB_TOKEN: ${{ inputs.dockerhub-token }}
         DOCKERHUB_USERNAME: ${{ inputs.dockerhub-username }}
+        PYPI_TOKEN: ${{ inputs.pypi_token }}
         VJER_BUILD_NUM: ${{ inputs.build-num }}
         VJER_ENV: ${{ inputs.vjer-env }}
         VJER_PYPROJECT_BUILD: ${{ inputs.pyproject-build }}
