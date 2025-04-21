@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [3.1.0] - Unreleaed
+
+- Added
+  - Added pass in of GitHub token during checkout. (GitHub #11)
+
+## Release History
+
 ### [3.0.0] - 2025-04-21
 
 - Added
@@ -14,8 +21,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Changed
   - Converted vjer from a workflow to an action. (GitHub #10)
-
-## Release History
 
 ### [2.2.1] - 2025-04-18
 
