@@ -45,7 +45,7 @@ runs:
     - name: Checkout source
       uses: actions/checkout@v4
       with:
-        token: ${{ intputs.enable-git-commit }}
+        token: ${{ inputs.enable-git-commit }}
 
     - name: Download artifacts
       if: inputs.action == 'pre_release' || inputs.action == 'release'
