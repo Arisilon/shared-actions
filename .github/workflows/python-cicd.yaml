@@ -36,8 +36,6 @@ jobs:
     name: Publish tests results
     needs: test
     runs-on: ubuntu-latest
-    permissions:
-      checks: write
     if: always()
     steps:
       - name: Download Artifacts
@@ -86,9 +84,6 @@ jobs:
     needs: install-test
     runs-on: ubuntu-latest
     environment: pre_release
-    permissions:
-      contents: write
-      id-token: write
     steps:
       - name: Run Vjer build
         uses: arisilon/shared-actions/.github/actions/vjer@main
@@ -105,9 +100,6 @@ jobs:
     needs: pre_release
     runs-on: ubuntu-latest
     environment: release
-    permissions:
-      contents: write
-      id-token: write
     steps:
       - name: Run Vjer build
         uses: arisilon/shared-actions/.github/actions/vjer@main
