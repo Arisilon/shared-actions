@@ -1,10 +1,7 @@
 """Program to install Vjer from PyPI or a local directory."""
+# flake8: noqa: E501
 from os import getenv
 from subprocess import check_call
-
-VJER_VERSION = getenv('VJER_VERSION', 'latest')
-VJER_LOCAL = getenv('VJER_LOCAL', 'false').lower() == 'true'
-USE_PYPI_TEST = getenv('USE_PYPI_TEST', 'false').lower() == 'true'
 
 
 class Environment:
@@ -13,15 +10,20 @@ class Environment:
         """Get an environment variable."""
         return getenv(name, '')
 
+    def bool(self: 'Environment', name: str) -> bool:
+        """Get a boolean environment variable."""
+        return getenv(name, 'false').lower() == 'true'
+
 
 def main() -> None:
     """Main function to parse arguments and install Vjer."""
-    install_version = f'=={VJER_VERSION}' if (VJER_VERSION != 'latest') else ''
+    env = Environment()
+    install_version = f'=={env.vjer_version}' if (env.vjer_version != 'latest') else ''
     pip_command = ['pip', 'install', '--no-cache-dir']
-    if USE_PYPI_TEST:
+    if env.bool('use_pypi_test'):
         pip_command += ['--index-url', 'https://test.pypi.org/simple/',
                         '--extra-index-url', 'https://pypi.org/simple']
-    pip_command += ['.' if VJER_LOCAL else f'vjer{install_version}']
+    pip_command += ['.' if env.bool('vjer_local') else f'vjer{install_version}']
     print(pip_command)
     check_call(pip_command)
 

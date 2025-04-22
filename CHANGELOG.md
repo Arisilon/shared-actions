@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
-### [3.1.0] - Unreleaed
+### [3.1.0] - Unreleased
 
 - Added
   - Added pass in of GitHub token during checkout. (GitHub #11)

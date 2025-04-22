@@ -66,9 +66,9 @@ runs:
       shell: bash
       run: python "${{ github.action_path }}/action.py"
       env:
-        VJER_VERSION: ${{ inputs.vjer-version }}
-        VJER_LOCAL: ${{ inputs.vjer-local }}
-        USE_PYPI_TEST: ${{ inputs.use-pypi-test }}
+        vjer_version: ${{ inputs.vjer-version }}
+        vjer_local: ${{ inputs.vjer-local }}
+        use_pypi_test: ${{ inputs.use-pypi-test }}
 
     - name: Enable git commit
       shell: bash
