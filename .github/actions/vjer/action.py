@@ -1,6 +1,14 @@
 """Program to install Vjer from PyPI or a local directory."""
+from os import getenv
 from subprocess import check_call
 from sys import argv, exit as sys_exit, stderr
+
+
+class Environment:
+    """Class to access environment variables."""
+    def __getattr__(self: 'Environment', name: str) -> str:
+        """Get an environment variable."""
+        return getenv(name, '')
 
 
 def main() -> None:
