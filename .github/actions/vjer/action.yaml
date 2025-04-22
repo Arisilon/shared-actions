@@ -21,7 +21,8 @@ inputs:
     description: The DockerHub username to use for the action
   enable-git-commit:
     description: Enable git commit for the action
-    default: "false"
+  pypi_token:
+    description: The PyPi upload token
   pyproject-build:
     description: If this is a pyproject project
     default: "false"
@@ -42,7 +43,18 @@ runs:
   using: composite
   steps:
     - name: Checkout source
+      if: inputs.enable-git-commit == ''
       uses: actions/checkout@v4
+
+    - name: Checkout source
+      if: inputs.enable-git-commit != ''
+      uses: actions/checkout@v4
+      with:
+        token: ${{ inputs.enable-git-commit }}
+
+    - name: Download artifacts
+      if: inputs.action == 'pre_release' || inputs.action == 'release'
+      uses: actions/download-artifact@v4
 
     - name: Setup Python ${{ inputs.python-version }}
       uses: actions/setup-python@v5
@@ -52,11 +64,15 @@ runs:
 
     - name: Install Vjer
       shell: bash
-      run: python "${{ github.action_path }}/action.py" "${{ inputs.vjer-version }}" "${{ inputs.vjer-local }}" "${{ inputs.use-pypi-test }}"
+      run: python "${{ github.action_path }}/action.py"
+      env:
+        VJER_VERSION: ${{ inputs.vjer-version }}
+        VJER_LOCAL: ${{ inputs.vjer-local }}
+        USE_PYPI_TEST: ${{ inputs.use-pypi-test }}
 
     - name: Enable git commit
       shell: bash
-      if: inputs.enable-git-commit == 'true'
+      if: inputs.enable-git-commit != ''
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
@@ -69,6 +85,7 @@ runs:
       env:
         DOCKERHUB_TOKEN: ${{ inputs.dockerhub-token }}
         DOCKERHUB_USERNAME: ${{ inputs.dockerhub-username }}
+        PYPI_TOKEN: ${{ inputs.pypi_token }}
         VJER_BUILD_NUM: ${{ inputs.build-num }}
         VJER_ENV: ${{ inputs.vjer-env }}
         VJER_PYPROJECT_BUILD: ${{ inputs.pyproject-build }}
