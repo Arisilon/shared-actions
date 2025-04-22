@@ -43,7 +43,7 @@ runs:
   using: composite
   steps:
     - name: Checkout source
-      if inputs.enable-git-commit == ''
+      if: inputs.enable-git-commit == ''
       uses: actions/checkout@v4
 
     - name: Checkout source
