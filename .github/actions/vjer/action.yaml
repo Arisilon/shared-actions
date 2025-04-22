@@ -64,7 +64,11 @@ runs:
 
     - name: Install Vjer
       shell: bash
-      run: python "${{ github.action_path }}/action.py" "${{ inputs.vjer-version }}" "${{ inputs.vjer-local }}" "${{ inputs.use-pypi-test }}"
+      run: python "${{ github.action_path }}/action.py"
+      env:
+        VJER_VERSION: ${{ inputs.vjer-version }}
+        VJER_LOCAL: ${{ inputs.vjer-local }}
+        USE_PYPI_TEST: ${{ inputs.use-pypi-test }}
 
     - name: Enable git commit
       shell: bash

@@ -1,21 +1,20 @@
 """Program to install Vjer from PyPI or a local directory."""
+from os import getenv
 from subprocess import check_call
-from sys import argv, exit as sys_exit, stderr
+
+VJER_VERSION = getenv('VJER_VERSION', 'latest')
+VJER_LOCAL = getenv('VJER_LOCAL', 'false').lower() == 'true'
+USE_PYPI_TEST = getenv('USE_PYPI_TEST', 'false').lower() == 'true'
 
 
 def main() -> None:
     """Main function to parse arguments and install Vjer."""
-    if len(argv) != 4:
-        print('Usage: action.py <version> <use_local> <use_pypi_test>',
-              file=stderr)
-        sys_exit(1)
-    (version, use_local, use_pypi_test) = argv[1:4]
-    install_version = f'=={version}' if (version != 'latest') else ''
+    install_version = f'=={VJER_VERSION}' if (VJER_VERSION != 'latest') else ''
     pip_command = ['pip', 'install', '--no-cache-dir']
-    if bool(use_pypi_test):
+    if USE_PYPI_TEST:
         pip_command += ['--index-url', 'https://test.pypi.org/simple/',
                         '--extra-index-url', 'https://pypi.org/simple']
-    pip_command += ['.' if bool(use_local) else f'vjer{install_version}']
+    pip_command += ['.' if VJER_LOCAL else f'vjer{install_version}']
     print(pip_command)
     check_call(pip_command)
 
