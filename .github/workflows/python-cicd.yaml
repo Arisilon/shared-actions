@@ -99,14 +99,15 @@ jobs:
     if: (github.event_name != 'pull_request') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/'))
     needs: pre_release
     runs-on: ubuntu-latest
-    environment: rc_release
+    environment: release
     steps:
       - name: Run Vjer rc_release
         uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: release
-          enable-git-commit: true
+          enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
           os: ubuntu-latest
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
           python-version: 3.12
         env:
@@ -122,8 +123,9 @@ jobs:
         uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: release
-          enable-git-commit: true
+          enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
           os: ubuntu-latest
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
           python-version: 3.12
 
