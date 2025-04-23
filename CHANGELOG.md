@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Added
   - Added pass in of GitHub token during checkout. (GitHub #11)
+  - Added rc release.
 
 ## Release History
 
