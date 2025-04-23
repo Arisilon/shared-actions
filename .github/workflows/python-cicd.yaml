@@ -99,7 +99,7 @@ jobs:
     if: (github.event_name != 'pull_request') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/'))
     needs: pre_release
     runs-on: ubuntu-latest
-    environment: release
+    environment: rc_release
     steps:
       - name: Run Vjer rc_release
         uses: arisilon/shared-actions/.github/actions/vjer@main
