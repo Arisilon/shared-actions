@@ -26,9 +26,6 @@ inputs:
   pyproject-build:
     description: If this is a pyproject project
     default: "false"
-  use-pypi-test:
-    description: Use Test PyPi for the action
-    default: "false"
   vjer-env:
     description: The Vjer environment to use
     default: development
@@ -68,7 +65,6 @@ runs:
       env:
         vjer_version: ${{ inputs.vjer-version }}
         vjer_local: ${{ inputs.vjer-local }}
-        use_pypi_test: ${{ inputs.use-pypi-test }}
 
     - name: Enable git commit
       shell: bash

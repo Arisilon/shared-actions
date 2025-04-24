@@ -7,12 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
-### [3.1.0] - Unreleased
+### [4.0.0] - Unreleased
 
 - Added
   - Added pass in of GitHub token during checkout. (GitHub #11)
-  - Added rc release.
+  - Added rc release. (GitHub #13)
 
+- Removed
+  - Removed tetest PyPi support. (GitHub #13)
 ## Release History
 
 ### [3.0.0] - 2025-04-21

@@ -72,7 +72,6 @@ jobs:
       python-version: ${{ matrix.python-version }}
       test-action: ${{ inputs.test-action }}
       test-dir: tests
-      use-pypi-test: true
     strategy:
       matrix:
         os:
