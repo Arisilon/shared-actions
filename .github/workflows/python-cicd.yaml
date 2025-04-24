@@ -1,8 +1,12 @@
 on:
   workflow_call:
     inputs:
+      skip-pypi-test:
+        type: boolean
+        default: false
       test-action:
         type: string
+
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -86,6 +90,7 @@ jobs:
     environment: pre_release
     steps:
       - name: Run Vjer pre_release
+        if: ${{ !inputs.skip-pypi-test }}
         uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: pre_release
