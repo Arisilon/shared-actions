@@ -119,7 +119,7 @@ jobs:
       - name: Run Vjer rc_release
         uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
-          action: release
+          action: pre_release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
           os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
