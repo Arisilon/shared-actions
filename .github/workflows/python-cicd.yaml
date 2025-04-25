@@ -32,7 +32,7 @@ jobs:
           pyproject-build: true
           python-version: ${{ matrix.python-version }}
           vjer-local: ${{ inputs.vjer-local }}
-          vjer-vjer-version: ${{ inputs.vjer-version }}
+          vjer-version: ${{ inputs.vjer-version }}
     strategy:
       matrix:
         os:
@@ -70,7 +70,7 @@ jobs:
           pyproject-build: true
           python-version: 3.12
           vjer-local: ${{ inputs.vjer-local }}
-          vjer-vjer-version: ${{ inputs.vjer-version }}
+          vjer-version: ${{ inputs.vjer-version }}
 
   install-test:
     needs: build
@@ -108,7 +108,7 @@ jobs:
           pyproject-build: true
           python-version: 3.12
           vjer-local: ${{ inputs.vjer-local }}
-          vjer-vjer-version: ${{ inputs.vjer-version }}
+          vjer-version: ${{ inputs.vjer-version }}
 
   rc_release:
     if: (github.event_name != 'pull_request') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/'))
@@ -125,6 +125,8 @@ jobs:
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
           python-version: 3.12
+          vjer-local: ${{ inputs.vjer-local }}
+          vjer-version: ${{ inputs.vjer-version }}
         env:
             VJER_CFG: vjer-rc.yml
 
@@ -144,6 +146,6 @@ jobs:
           pyproject-build: true
           python-version: 3.12
           vjer-local: ${{ inputs.vjer-local }}
-          vjer-vjer-version: ${{ inputs.vjer-version }}
+          vjer-version: ${{ inputs.vjer-version }}
 
 # cSpell:ignore pyproject
