@@ -19,12 +19,7 @@ def main() -> None:
     """Main function to parse arguments and install Vjer."""
     env = Environment()
     install_version = f'=={env.vjer_version}' if (env.vjer_version != 'latest') else ''
-    pip_command = ['pip', 'install', '--no-cache-dir']
-    if env.bool('use_pypi_test'):
-        pip_command += ['--index-url', 'https://test.pypi.org/simple/',
-                        '--extra-index-url', 'https://pypi.org/simple']
-    pip_command += ['.' if env.bool('vjer_local') else f'vjer{install_version}']
-    print(pip_command)
+    print(pip_command := ['pip', 'install', '--no-cache-dir', '.' if env.bool('vjer_local') else f'vjer{install_version}'])
     check_call(pip_command)
 
 

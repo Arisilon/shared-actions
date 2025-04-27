@@ -18,10 +18,6 @@ on:
         required: false
         type: string
         default: .
-      use-pypi-test:
-        required: false
-        type: boolean
-        default: false
 
 env:
   ARTIFACTS_DIR: artifacts
@@ -48,15 +44,11 @@ jobs:
 
       - name: Install Python module for testing
         if: inputs.os != 'windows-latest'
-        run: |
-          if [[ "${{ inputs.use-pypi-test }}" == "true" ]]; then pypi_install_arg="--extra-index-url https://test.pypi.org/simple"; fi
-          pip install $pypi_install_arg $ARTIFACTS_DIR/*.whl
+        run: pip install $pypi_install_arg $ARTIFACTS_DIR/*.whl
 
       - name: Install Python module for testing
         if: inputs.os == 'windows-latest'
-        run: |
-          if ('${{ inputs.use-pypi-test }}' -eq 'true') { $pypi_install_arg = '--extra-index-url=https://test.pypi.org/simple' }
-          pip install $pypi_install_arg (Get-Item $env:ARTIFACTS_DIR\*.whl)
+        run: pip install $pypi_install_arg (Get-Item $env:ARTIFACTS_DIR\*.whl)
 
       - name: Test installed module
         run: cd ${{ inputs.test-dir }} && ${{ inputs.test-action }}
