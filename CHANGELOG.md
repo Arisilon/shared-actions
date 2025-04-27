@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - Added rc release. (GitHub #13)
 
 - Removed
-  - Removed tetest PyPi support. (GitHub #13)
+  - Removed test PyPi support. (GitHub #13)
 
 ## Release History
 
