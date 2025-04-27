@@ -128,7 +128,7 @@ jobs:
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
         env:
-            VJER_CFG: vjer-rc.yml
+          VJER_CFG: vjer-rc.yml
 
   release:
     if: (github.event_name != 'pull_request') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/'))
@@ -147,5 +147,7 @@ jobs:
           python-version: 3.12
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
+        env:
+          GH_TOKEN: ${{ github.token }}
 
 # cSpell:ignore pyproject

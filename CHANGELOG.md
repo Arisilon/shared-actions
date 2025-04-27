@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [4.0.1] - 2025-04-27
+
+- Added
+  - Set GH_TOKEN on release (GitHub #14)
+
+## Release History
+
 ### [4.0.0] - 2025-04-27
 
 - Added
@@ -15,8 +22,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Removed
   - Removed test PyPi support. (GitHub #13)
-
-## Release History
 
 ### [3.0.0] - 2025-04-21
 
