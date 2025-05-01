@@ -26,6 +26,9 @@ inputs:
   pyproject-build:
     description: If this is a pyproject project
     default: "false"
+  vjer-docker-push:
+    description: If a build should push to DockerHub
+    default: "false"
   vjer-env:
     description: The Vjer environment to use
     default: development
@@ -83,6 +86,7 @@ runs:
         DOCKERHUB_USERNAME: ${{ inputs.dockerhub-username }}
         PYPI_TOKEN: ${{ inputs.pypi_token }}
         VJER_BUILD_NUM: ${{ inputs.build-num }}
+        VJER_DOCKER_PUSH: ${{ inputs.vjer-docker-push }}
         VJER_ENV: ${{ inputs.vjer-env }}
         VJER_PYPROJECT_BUILD: ${{ inputs.pyproject-build }}
 

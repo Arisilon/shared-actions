@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [4.1.0] - 2025-05-01
+
+- Added
+  - Added support for VJER_DOCKER_PUSH. (GitHub #15)
+
+## Release History
+
 ### [4.0.1] - 2025-04-27
 
 - Added
   - Set GH_TOKEN on release (GitHub #14)
-
-## Release History
 
 ### [4.0.0] - 2025-04-27
 
