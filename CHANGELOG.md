@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [4.2.0] - 2026-02-09
+
+- Added
+  - Added Python 3.14 to Python tests. (GitHub #16)
+
+## Release History
+
 ### [4.1.0] - 2025-05-01
 
 - Added
   - Added support for VJER_DOCKER_PUSH. (GitHub #15)
-
-## Release History
 
 ### [4.0.1] - 2025-04-27
 
