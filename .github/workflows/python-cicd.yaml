@@ -58,6 +58,8 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           files: "${{ env.UNIT_TEST_DIR }}/**/*.xml"
+    permissions:
+      issues: write
 
   build:
     runs-on: ubuntu-latest
