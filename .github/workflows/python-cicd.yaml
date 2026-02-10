@@ -61,6 +61,7 @@ jobs:
     permissions:
       checks: write
       issues: write
+      pull-requests: write
 
   build:
     runs-on: ubuntu-latest
