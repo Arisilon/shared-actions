@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [4.2.1] - 2026-02-10
+
+- Added
+  - Added permissions for publishing unit tests to PR. (GitHub #17)
+
+## Release History
+
 ### [4.2.0] - 2026-02-09
 
 - Added
   - Added Python 3.14 to Python tests. (GitHub #16)
-
-## Release History
 
 ### [4.1.0] - 2025-05-01
 
