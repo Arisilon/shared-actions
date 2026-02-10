@@ -60,6 +60,7 @@ jobs:
           files: "${{ env.UNIT_TEST_DIR }}/**/*.xml"
     permissions:
       checks: write
+      issues: write
 
   build:
     runs-on: ubuntu-latest
