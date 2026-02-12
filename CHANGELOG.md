@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [4.2.2] - 2026-02-12
+
+- Changed
+  - Updated the remote actions to the latest major version. (GitHub #18)
+
+## Release History
+
 ### [4.2.1] - 2026-02-10
 
 - Added
   - Added permissions for publishing unit tests to PR. (GitHub #17)
-
-## Release History
 
 ### [4.2.0] - 2026-02-09
 
