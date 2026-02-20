@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Changed
   - Set fail-fast to false for Python CI/CD tests. (GitHub #19)
+  - Publish all test results.
 
 ## Release History
 
