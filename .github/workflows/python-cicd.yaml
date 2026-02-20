@@ -6,6 +6,12 @@ on:
         default: false
       test-action:
         type: string
+      test-os-list:
+        type: string
+        default: '["ubuntu-latest", "macos-latest", "windows-latest"]'
+      test-python-versions:
+        type: string
+        default: '["3.12", "3.13", "3.14"]'
       vjer-local:
         type: boolean
         default: false
@@ -36,14 +42,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
-        python-version:
-          - 3.12
-          - 3.13
-          - 3.14
+        os: ${{ fromJSON(inputs.test-os-list) }}
+        python-version: ${{ fromJSON(inputs.test-python-versions) }}
 
   publish-test-results:
     name: Publish tests results
@@ -53,14 +53,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
-        python-version:
-          - 3.12
-          - 3.13
-          - 3.14
+        os: ${{ fromJSON(inputs.test-os-list) }}
+        python-version: ${{ fromJSON(inputs.test-python-versions) }}
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v7
@@ -104,14 +98,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
-        python-version:
-          - 3.12
-          - 3.13
-          - 3.14
+        os: ${{ fromJSON(inputs.test-os-list) }}
+        python-version: ${{ fromJSON(inputs.test-python-versions) }}
 
   pre_release:
     if: (github.event_name != 'pull_request') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/') || startsWith(github.ref_name, 'feature/'))
