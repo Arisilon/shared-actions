@@ -34,6 +34,7 @@ jobs:
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
     strategy:
+      fail-fast: false
       matrix:
         os:
           - ubuntu-latest
@@ -87,6 +88,7 @@ jobs:
       test-action: ${{ inputs.test-action }}
       test-dir: tests
     strategy:
+      fail-fast: false
       matrix:
         os:
           - ubuntu-latest

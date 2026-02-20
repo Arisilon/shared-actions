@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [5.0.0] - 2026-02-19
+
+- Changed
+  - Set fail-fast to false for Python CI/CD tests. (GitHub #19)
+
+## Release History
+
 ### [4.2.2] - 2026-02-12
 
 - Changed
   - Updated the remote actions to the latest major version. (GitHub #18)
-
-## Release History
 
 ### [4.2.1] - 2026-02-10
 
