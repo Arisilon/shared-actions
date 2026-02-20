@@ -57,17 +57,21 @@ jobs:
           - ubuntu-latest
           - macos-latest
           - windows-latest
+        python-version:
+          - 3.12
+          - 3.13
+          - 3.14
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v7
         with:
-          pattern: test_results-${{ matrix.os }}-*
+          pattern: test_results-${{ matrix.os }}-${{ matrix.python-version }}
           merge-multiple: true
           path: ${{ env.UNIT_TEST_DIR }}
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
-          check_name: Test Results (${{ matrix.os }})
+          check_name: Test Results (${{ matrix.os }}, Python ${{ matrix.python-version }})
           files: "${{ env.UNIT_TEST_DIR }}/**/*.xml"
     permissions:
       checks: write
