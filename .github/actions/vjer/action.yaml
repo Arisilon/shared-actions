@@ -55,6 +55,9 @@ runs:
     - name: Download artifacts
       if: inputs.action == 'pre_release' || inputs.action == 'release'
       uses: actions/download-artifact@v7
+      with:
+        name: artifacts
+        path: artifacts
 
     - name: Setup Python ${{ inputs.python-version }}
       uses: actions/setup-python@v6

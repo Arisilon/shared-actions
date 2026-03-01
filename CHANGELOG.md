@@ -7,13 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [5.0.1] - 2026-02-28
+
+- Changed
+  - Fix vjer action artifact download. (GitHub #20)
+
+## Release History
+
 ### [5.0.0] - 2026-02-19
 
 - Changed
   - Set fail-fast to false for Python CI/CD tests. (GitHub #19)
   - Publish all test results.
-
-## Release History
 
 ### [4.2.2] - 2026-02-12
 
