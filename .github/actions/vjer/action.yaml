@@ -56,8 +56,7 @@ runs:
       if: inputs.action == 'pre_release' || inputs.action == 'release'
       uses: actions/download-artifact@v7
       with:
-        name: artifacts
-        path: artifacts
+        merge-multiple: true
 
     - name: Setup Python ${{ inputs.python-version }}
       uses: actions/setup-python@v6
