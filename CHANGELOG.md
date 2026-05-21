@@ -7,12 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [6.0.0] - 2026-05-20
+
+- Changed
+  - Changed the default Python usage to 3.14. (GitHub #23)
+  - Upgraded remote actions.
+
+## Release History
+
 ### [5.0.2] - 2026-03-01
 
 - Changed
   - Fix vjer action artifact download when no artifacts. (GitHub #21)
-
-## Release History
 
 ### [5.0.1] - 2026-02-28
 

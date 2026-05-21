@@ -11,7 +11,7 @@ on:
         default: '["ubuntu-latest", "macos-latest", "windows-latest"]'
       test-python-versions:
         type: string
-        default: '["3.12", "3.13", "3.14"]'
+        default: '["3.14", "3.15"]'
       vjer-local:
         type: boolean
         default: false
@@ -82,7 +82,7 @@ jobs:
           action: build
           os: ubuntu-latest
           pyproject-build: true
-          python-version: 3.12
+          python-version: 3.14
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
 
@@ -116,7 +116,7 @@ jobs:
           os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
-          python-version: 3.12
+          python-version: 3.14
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
 
@@ -134,7 +134,7 @@ jobs:
           os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
-          python-version: 3.12
+          python-version: 3.14
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
         env:
@@ -154,7 +154,7 @@ jobs:
           os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
-          python-version: 3.12
+          python-version: 3.14
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
         env:
