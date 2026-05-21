@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Vjer release
-        uses: arisilon/shared-actions/.github/actions/vjer@main
+        uses: arisilon/shared-actions/.github/actions/vjer@released
         with:
           action: release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
