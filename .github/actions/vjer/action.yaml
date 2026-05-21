@@ -22,7 +22,6 @@ inputs:
     description: The PyPi upload token
   pyproject-build:
     description: If this is a pyproject project
-    default: "false"
   python-version:
     description: The Python version to use
     default: "3.14"
