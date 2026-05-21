@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
-### [6.0.0] - 2026-05-20
+### [6.0.0] - Unreleased
 
 - Added
   - Added release action. (GitHub #3)
