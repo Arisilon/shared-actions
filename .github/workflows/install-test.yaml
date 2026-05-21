@@ -1,5 +1,3 @@
-name: Shared Install Test Action
-
 on:
   workflow_call:
     inputs:
