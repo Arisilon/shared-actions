@@ -1,0 +1,25 @@
+name: Shared Actions Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  checks: write
+  contents: write
+  id-token: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    if: (github.ref_name == 'main') || startsWith(github.ref_name, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Vjer release
+        uses: arisilon/shared-actions/.github/actions/vjer@main
+        with:
+          action: release
+          enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
+          os: ubuntu-latest
+        env:
+          GH_TOKEN: ${{ github.token }}

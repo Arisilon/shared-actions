@@ -65,6 +65,7 @@ jobs:
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
+          action_fail_on_inconclusive: true
           check_name: Test Results (${{ matrix.os }}, Python ${{ matrix.python-version }})
           files: "${{ env.UNIT_TEST_DIR }}/**/*.xml"
     permissions:
@@ -82,7 +83,6 @@ jobs:
           action: build
           os: ubuntu-latest
           pyproject-build: true
-          python-version: 3.14
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
 
@@ -116,7 +116,6 @@ jobs:
           os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
-          python-version: 3.14
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
 
@@ -134,7 +133,6 @@ jobs:
           os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
-          python-version: 3.14
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
         env:
@@ -154,7 +152,6 @@ jobs:
           os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
-          python-version: 3.14
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
         env:

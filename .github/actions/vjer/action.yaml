@@ -8,9 +8,6 @@ inputs:
   os:
     description: The OS to run the action on
     required: true
-  python-version:
-    description: The Python version to use
-    required: true
   # optional inputs
   build-num:
     description: The build number to use for the action
@@ -26,6 +23,9 @@ inputs:
   pyproject-build:
     description: If this is a pyproject project
     default: "false"
+  python-version:
+    description: The Python version to use
+    default: "3.14"
   vjer-docker-push:
     description: If a build should push to DockerHub
     default: "false"

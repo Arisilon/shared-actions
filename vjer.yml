@@ -1,0 +1,9 @@
+schema: 3
+project:
+  name: shared-actions
+  version: 6.0.0
+release:
+  steps:
+    - type: tag_source
+    - type: github
+    - type: increment_version
