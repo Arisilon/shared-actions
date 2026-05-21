@@ -6,4 +6,4 @@ release:
   steps:
     - type: tag_source
     - type: github
-    - type: increment_version
+    - type: increment_release
