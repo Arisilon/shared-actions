@@ -46,8 +46,27 @@ jobs:
           vjer-version: ${{ inputs.vjer-version }}
         continue-on-error: true
 
-      - name: Publish Test Results
+      - name: Publish Linux Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          action_fail: true
+          action_fail_on_inconclusive: true
+          check_name: Test Results (${{ matrix.os }}, Python ${{ matrix.python-version }})
+          files: "${{ env.UNIT_TEST_DIR }}/**/*.xml"
+
+      - name: Publish MacOS Test Results
+        uses: EnricoMi/publish-unit-test-result-action@macos/v2
+        if: matrix.os == 'macos-latest'
+        with:
+          action_fail: true
+          action_fail_on_inconclusive: true
+          check_name: Test Results (${{ matrix.os }}, Python ${{ matrix.python-version }})
+          files: "${{ env.UNIT_TEST_DIR }}/**/*.xml"
+
+      - name: Publish Windows Test Results
+        uses: EnricoMi/publish-unit-test-result-action@windows/v2
+        if: matrix.os == 'windows-latest'
         with:
           action_fail: true
           action_fail_on_inconclusive: true
