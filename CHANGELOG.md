@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Changed
   - Publish test results as they occur. (GitHub #24)
+  - Rename test-action input to install-test-action.
 
 ## Release History
 
