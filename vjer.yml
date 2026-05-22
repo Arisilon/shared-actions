@@ -1,9 +1,10 @@
 project:
   name: shared-actions
-  version: 7.0.0
+  version: 7.0.1
 release:
   steps:
     - type: tag_source
+      release_tag: released
     - type: github
     - type: increment_release
 schema: 3
