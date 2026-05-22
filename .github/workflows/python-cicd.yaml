@@ -29,6 +29,11 @@ env:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ${{ fromJSON(inputs.test-os-list) }}
+        python-version: ${{ fromJSON(inputs.test-python-versions) }}
     steps:
       - name: Run Vjer test
         uses: arisilon/shared-actions/.github/actions/vjer@released
@@ -39,32 +44,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ${{ fromJSON(inputs.test-os-list) }}
-        python-version: ${{ fromJSON(inputs.test-python-versions) }}
+        continue-on-error: true
 
-  publish-test-results:
-    name: Publish tests results
-    needs: test
-    runs-on: ubuntu-latest
-    if: always()
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ${{ fromJSON(inputs.test-os-list) }}
-        python-version: ${{ fromJSON(inputs.test-python-versions) }}
-    steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v7
-        with:
-          pattern: test_results-${{ matrix.os }}-${{ matrix.python-version }}
-          merge-multiple: true
-          path: ${{ env.UNIT_TEST_DIR }}
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
+          action_fail: true
           action_fail_on_inconclusive: true
           check_name: Test Results (${{ matrix.os }}, Python ${{ matrix.python-version }})
           files: "${{ env.UNIT_TEST_DIR }}/**/*.xml"

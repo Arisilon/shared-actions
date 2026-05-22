@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [7.0.0] - Unreleased
+
+- Changed
+  - Publish test results as they occur. (GitHub #24)
+
+## Release History
+
 ### [6.0.0] - 2026-05-21
 
 - Added
@@ -15,8 +22,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Changed
   - Changed the default Python usage to 3.14. (GitHub #23)
   - Upgraded remote actions.
-
-## Release History
 
 ### [5.0.2] - 2026-03-01
 
