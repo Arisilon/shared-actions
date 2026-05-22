@@ -3,5 +3,7 @@ project:
   version: 7.0.0
 release:
   steps:
-  - type: increment_release
+    - type: tag_source
+    - type: github
+    - type: increment_release
 schema: 3
