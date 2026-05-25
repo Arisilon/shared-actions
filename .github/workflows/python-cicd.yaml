@@ -36,7 +36,7 @@ jobs:
         python-version: ${{ fromJSON(inputs.test-python-versions) }}
     steps:
       - name: Run Vjer test
-        uses: arisilon/shared-actions/.github/actions/vjer@released
+        uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: test
           os: ${{ matrix.os }}
@@ -82,7 +82,7 @@ jobs:
     needs: test
     steps:
       - name: Run Vjer build
-        uses: arisilon/shared-actions/.github/actions/vjer@released
+        uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: build
           os: ubuntu-latest
@@ -113,7 +113,7 @@ jobs:
     steps:
       - name: Run Vjer pre_release
         if: ${{ !inputs.skip-pypi-test }}
-        uses: arisilon/shared-actions/.github/actions/vjer@released
+        uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: pre_release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
@@ -130,7 +130,7 @@ jobs:
     environment: rc_release
     steps:
       - name: Run Vjer rc_release
-        uses: arisilon/shared-actions/.github/actions/vjer@released
+        uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: pre_release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
@@ -149,7 +149,7 @@ jobs:
     environment: release
     steps:
       - name: Run Vjer release
-        uses: arisilon/shared-actions/.github/actions/vjer@released
+        uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}

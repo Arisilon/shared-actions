@@ -7,13 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Current Release
 
+### [7.0.1] - 2025-05-25
+
+- Changed
+  - Only download artifacts on release actions. (GitHub #25)
+
+## Release History
+
 ### [7.0.0] - 2025-05-22
 
 - Changed
   - Publish test results as they occur. (GitHub #24)
   - Rename test-action input to install-test-action.
-
-## Release History
 
 ### [6.0.0] - 2026-05-21
 

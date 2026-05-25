@@ -55,6 +55,7 @@ runs:
       if: inputs.action == 'pre_release' || inputs.action == 'release'
       uses: actions/download-artifact@v8
       with:
+        name: artifacts
         path: artifacts
         merge-multiple: true
 
