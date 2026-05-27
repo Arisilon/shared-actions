@@ -7,7 +7,6 @@ Arisilon organization GitHub shared actions.
 This is the procedure for releasing the shared actions
 
 1. Validate that all issues are "Ready for Release".
-1. Update CHANGELOG.md.
 1. Run the GitHub release action
 1. Validate the tag and release.
 1. Label the issues as res::complete and mark as "Completed".
