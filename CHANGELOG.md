@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [7.0.1] - 2026-05-25
+## [Unreleased]
+
+### Changed
+
+- Implement change log automation. (GitHub #26)
+
+## [released] - 2026-05-25
 
 ### Changed
 
@@ -285,6 +291,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove spelling words.
 - Remove test code.
 
+[unreleased]: https://github.com/Arisilon/shared-actions/compare/released..HEAD
 [released]: https://github.com/Arisilon/shared-actions/compare/7.0.0..released
 [7.0.0]: https://github.com/Arisilon/shared-actions/compare/6.0.0..7.0.0
 [6.0.0]: https://github.com/Arisilon/shared-actions/compare/v5.0.2..6.0.0
