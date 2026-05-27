@@ -35,7 +35,7 @@ runs:
       run: |
         if [ -n "${{ inputs.replace-tag }}" ]; then
           latest_version=$(git describe --tags --abbrev=0)
-          sed -i "s/\[${{ inputs.replace-tag }}\]/## \[${latest_version}\]/g" CHANGELOG.md
+          sed -i "s/\[${{ inputs.replace-tag }}\]/\[${latest_version}\]/g" CHANGELOG.md
         fi
 
     - name: Commit and push changelog update
