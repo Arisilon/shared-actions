@@ -12,6 +12,9 @@ on:
       test-python-versions:
         type: string
         default: '["3.14"]'
+      use-changelog-automation:
+        type: boolean
+        default: false
       vjer-local:
         type: boolean
         default: false
@@ -160,5 +163,11 @@ jobs:
           vjer-version: ${{ inputs.vjer-version }}
         env:
           GH_TOKEN: ${{ github.token }}
+
+      - name: Update Changelog
+        if: inputs.use-changelog-automation
+        uses: arisilon/shared-actions/.github/actions/update-changelog@released
+        with:
+          git-commit-token: ${{ secrets.RELEASE_TOKEN }}
 
 # cSpell:ignore pyproject

@@ -4,7 +4,7 @@ description: Automatically update the CHANGELOG.md file using git-cliff
 inputs:
   git-commit-token:
     description: Token for enabling git commit for the action
-  replace-tag:
+  fix-release-tag:
     description: Tag to replace with the latest version
 
 runs:
@@ -33,9 +33,9 @@ runs:
     - name: Replace tag with latest version
       shell: bash
       run: |
-        if [ -n "${{ inputs.replace-tag }}" ]; then
+        if [ -n "${{ inputs.fix-release-tag }}" ]; then
           latest_version=$(git describe --tags --abbrev=0)
-          sed -i "s/\[${{ inputs.replace-tag }}\]/\[${latest_version}\]/g" CHANGELOG.md
+          sed -i "s/\[${{ inputs.fix-release-tag }}\]/\[${latest_version}\]/g" CHANGELOG.md
         fi
 
     - name: Commit and push changelog update
