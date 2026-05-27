@@ -9,19 +9,19 @@ runs:
       with:
         fetch-depth: 0
 
-    - name: Install Rust toolchain
-      uses: actions-rs/toolchain@v1
+    - name: Setup Python ${{ inputs.python-version }}
+      uses: actions/setup-python@v6
       with:
-        toolchain: stable
-        override: true
+        python-version: "3.14"
+        cache: "pip"
 
     - name: Install git-cliff
       shell: bash
-      run: cargo install git-cliff --locked
+      run: pip install git-cliff
 
     - name: Generate changelog
       shell: bash
-      run: git-cliff --config cliff.toml --output CHANGELOG.md
+      run: git cliff --config cliff.toml --output CHANGELOG.md
 
     - name: Commit and push changelog update
       shell: bash

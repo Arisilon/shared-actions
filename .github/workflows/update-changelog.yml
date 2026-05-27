@@ -2,6 +2,9 @@ name: Update Changelog
 
 on:
   push:
+    branches:
+      - main
+      - release/*
     paths-ignore:
       - CHANGELOG.md
 

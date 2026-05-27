@@ -61,7 +61,7 @@ filter_unconventional = false
 # Optionally sets the commit's scope and can decide to exclude commits from further processing.
 commit_parsers = [
     { message = "\\[skip(?: |-)ci\\]", skip = true },
-    { message = "\\[no cl\\]", skip = true },
+    { message = "\\[skip(?: |-)cl\\]", skip = true },
     { message = "^[a|A]dd", group = "Added" },
     { message = "^[s|S]upport", group = "Added" },
     { message = "^[r|R]emove", group = "Removed" },
