@@ -4,6 +4,8 @@ description: Automatically update the CHANGELOG.md file using git-cliff
 inputs:
   git-commit-token:
     description: Token for enabling git commit for the action
+  replace-tag:
+    description: Tag to replace with the latest version
 
 runs:
   using: composite
@@ -27,6 +29,14 @@ runs:
     - name: Generate changelog
       shell: bash
       run: git cliff --config cliff.toml --output CHANGELOG.md
+
+    - name: Replace tag with latest version
+      shell: bash
+      run: |
+        if [ -n "${{ inputs.replace-tag }}" ]; then
+          latest_version=$(git describe --tags --abbrev=0)
+          sed -i "s/## \[${{ inputs.replace-tag }}\]/## \[${latest_version}\]/g" CHANGELOG.md
+        fi
 
     - name: Commit and push changelog update
       shell: bash
