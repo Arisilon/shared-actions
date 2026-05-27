@@ -1,119 +1,308 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Current Release
+## [7.0.1] - 2026-05-25
 
-### [7.0.1] - 2025-05-25
+### Changed
 
-- Changed
-  - Only download artifacts on release actions. (GitHub #25)
+- Use new release tag in vjer.
+- Only download artifacts on release actions. (GitHub #25)
+- Use released branch after testing.
 
-## Release History
+## [7.0.0] - 2026-05-22
 
-### [7.0.0] - 2025-05-22
+### Changed
 
-- Changed
-  - Publish test results as they occur. (GitHub #24)
-  - Rename test-action input to install-test-action.
+- Update readme.
+- Publish test results as they occur. (GitHub #24)
+- Rename test-action input to install-test-action.
+- Use OS specific actions. (GitHub #24)
+- Fix action path. (GitHub #24)
+- Update change log.
+- Restore removed release steps.
 
-### [6.0.0] - 2026-05-21
+## [6.0.0] - 2026-05-21
 
-- Added
-  - Added release action. (GitHub #3)
+### Added
 
-- Changed
-  - Changed the default Python usage to 3.14. (GitHub #23)
-  - Upgraded remote actions.
+- Added release action. (GitHub #3)
+- Add requirements.txt for Python setup. (GitHub #3)
+- Add released tag. (GitHub #3)
 
-### [5.0.2] - 2026-03-01
+### Changed
 
-- Changed
-  - Fix vjer action artifact download when no artifacts. (GitHub #21)
+- Changed the default Python usage to 3.14. (GitHub #23)
+- Python 3.15 is not yet available for testing.
+- Don't set pyproject-build on default.
+- Fix the vjer step name. (GitHub #3)
+- Final updates for release.
 
-### [5.0.1] - 2026-02-28
+## [5.0.2] - 2026-03-01
 
-- Changed
-  - Fix vjer action artifact download. (GitHub #20)
+### Changed
 
-### [5.0.0] - 2026-02-19
+- Test merge-multiple option.
+- Set path for artifacts
+- Fix vjer action artifact download when no artifacts. (GitHub #21)
 
-- Changed
-  - Set fail-fast to false for Python CI/CD tests. (GitHub #19)
-  - Publish all test results.
+## [5.0.1] - 2026-03-01
 
-### [4.2.2] - 2026-02-12
+### Changed
 
-- Changed
-  - Updated the remote actions to the latest major version. (GitHub #18)
+- Fix vjer action artifact download. (GitHub #20)
+- Test fix.
+- Revert to released branch after testing.
 
-### [4.2.1] - 2026-02-10
+## [5.0.0] - 2026-02-20
 
-- Added
-  - Added permissions for publishing unit tests to PR. (GitHub #17)
+### Changed
 
-### [4.2.0] - 2026-02-09
+- Set fail-fast to false for Python CI/CD tests. (GitHub #19)
+- Publish all test results.
+- Parameterize the OS and version lists.
 
-- Added
-  - Added Python 3.14 to Python tests. (GitHub #16)
+## [4.2.2] - 2026-02-12
 
-### [4.1.0] - 2025-05-01
+### Changed
 
-- Added
-  - Added support for VJER_DOCKER_PUSH. (GitHub #15)
+- Update all remote action versions.
+- Update change log.
+- Fix README formatting.
 
-### [4.0.1] - 2025-04-27
+## [4.2.1] - 2026-02-10
 
-- Added
-  - Set GH_TOKEN on release (GitHub #14)
+### Added
 
-### [4.0.0] - 2025-04-27
+- Add correct permission.
+- Add needed permission.
+- Add new missing permission.
 
-- Added
-  - Added pass in of GitHub token during checkout. (GitHub #11)
-  - Added rc release. (GitHub #13)
+### Changed
 
-- Removed
-  - Removed test PyPi support. (GitHub #13)
+- Allow test results to be published in PR comments.
+- Update change log.
 
-### [3.0.0] - 2025-04-21
+## [4.2.0] - 2026-02-09
 
-- Added
-  - Added support for test PyPi on local Vjer install. (GitHub #9)
+### Added
 
-- Changed
-  - Converted vjer from a workflow to an action. (GitHub #10)
+- Add PYthon 3.14 to Python tests. (GitHub #16)
 
-### [2.2.1] - 2025-04-18
+### Changed
 
-- Changed
-  - Fixed Vjer install on Windows. (GitHub #8)
+- Update change log.
 
-### [2.2.0] - 2025-04-17
+## [4.1.0] - 2025-05-01
 
-- Added
-  - Added support for enabling git commit during action. (GitHub #6)
-  - Added support for passing in the build number. (GitHub #7)
+### Added
 
-### [2.1.0] - 2025-04-12
+- Added support for VJER_DOCKER_PUSH. (GitHub #15)
 
-- Added
-  - Added support for specifying vjer version including PyPi test. (GitHub #5)
+## [4.0.1] - 2025-04-27
 
-### [2.0.0] - 2025-04-06
+### Changed
 
-- Changed
-  - Update for new Vjer usage. (GitHub #4)
+- Set GH_TOKEN on release (GitHub #14)
 
-### [1.0.1] - 2025-02-11
+## [4.0.0] - 2025-04-27
 
-- Changed
-  - Migrated repo to Arisilon organization. (GitHub #1)
-  - Updated remote actions to latest versions. (GitHub #2)
+### Added
 
-### [1.0.0]
+- Added pass in of GitHub token during checkout. (GitHub #11)
+- Add Python CI/CD workflow.
+- Add rc_release.
+- Add vjer-local Add vjer-version options to new CI/CD workflow.
 
-- Initial release
+### Changed
+
+- Fix typo.
+- Fix checkout with no token.
+- Fix syntax.
+- Improve argument handling.
+- Merge branch 'main' of github.com:Arisilon/shared-actions
+- Fix job name.
+- Set permissions at calling workflow.
+- Use release environment for rc_release.
+- Need separate environment for rc_release.
+- Allow skipping the PyPi test.
+- Fix variable name.
+- Fix Vjer config file name.
+- Merge remote-tracking branch 'refs/remotes/origin/main'
+- Update change log.
+- Replace test PyPi with RC release.
+- The rc-release is a pre_release action.
+- Fix vjer-version usage.
+
+### Removed
+
+- Remove redundant variables. (GitHub #11)
+
+## [3.0.0] - 2025-04-21
+
+### Added
+
+- Added support for test PyPi on local Vjer install . (GitHub #9)
+- Add new option to the command.
+- Add cross-platform action.
+- Add debugging output.
+- Add test action.
+- Add redirection.
+- Add use-pypi-test input to install test.
+- Add environment access.
+
+### Changed
+
+- Fix pip command usage.
+- Use standard extension.
+- Fix action reference.
+- Try a test re-usable workflow.
+- Fix re-usable test workflow.
+- Fix action call.
+- Update action call.
+- Change subprocess call.
+- Fix pip usage.
+- Fix reusable workflow.
+- Take more inputs.
+- Simplify action.
+- Convert vjer from workflow to action.
+- Secrets must be passed in.
+- Fix syntax.
+- Update change log.
+- Merge pull request #11 from Arisilon/feature/vjer-action
+- Fix pip usage on Windows.
+- Download artifacts on releases.
+- Update action.yaml
+- Update CHANGELOG.md
+
+### Removed
+
+- Remove shell command option.
+
+## [2.2.1] - 2025-04-19
+
+### Changed
+
+- Fixed Vjer install on Windows. (GitHub #8)
+- Update README.md
+- Merge branch 'main' of github.com:Arisilon/shared-actions
+- Fix conditional logic.
+- Need quotes around variables.
+- Update CHANGELOG.md.
+
+## [2.2.0] - 2025-04-18
+
+### Added
+
+- Added support for enabling git commit during action. (GitHub #6)
+- Added support for passing in the build number. (GitHub #7)
+
+### Changed
+
+- Update change log.
+
+## [2.1.0] - 2025-04-12
+
+### Added
+
+- Added support for specifying vjer version. (GitHub #5)
+- Added support for specifying PyPi test. (GitHub #5)
+
+### Changed
+
+- Update readme.
+- Fix PyPi test install. (GitHub #5)
+- Pass Dockerhub credentials.
+- Update the change log.
+
+## [2.0.0] - 2025-04-06
+
+### Changed
+
+- Fix var usage.
+- VJER_USE_FLIT must be a string.
+- Update change log.
+- Set build number.
+- Update for new Vjer usage.
+
+## [1.0.1] - 2025-02-12
+
+### Added
+
+- Add change log.
+
+### Changed
+
+- Updated remote actions to latest versions. (GitHub #2)
+
+## [1.0.0] - 2025-01-01
+
+### Added
+
+- Add artufact upload for builds.
+- Add install-test action.
+- Add pypi-publish action.
+- Add unit test upload.
+
+### Changed
+
+- Initial commit
+- Save test job.
+- Fix variable ref.
+- Fix action location.
+- Fix var usage.
+- Create an action for vjer.
+- Improve install testing.
+- Allow vjer to be run for testing.
+- Pass in vjer controlls.
+- Set VJER_ENV.
+- Improve publishing.
+- Need to checkout source to setup Python.
+- Pass in the run-id.
+- Change variable name.
+- Create an action to test variables.
+- Update the var test action.
+- Change variable type.
+- Change run id var type.
+- Pass download token.
+- Download artifacts before calling shared action.
+- Try inherited secrets.
+- Use local vjer when available.
+- Fix order and name the step.
+- Upload unit test results without publish.
+- Only download artifacts from build.
+- Fix unit test directory name.
+- Need to test actions.
+- Fix artifact download.
+- Update Python action.
+- Update publishing shared workflow.
+
+### Removed
+
+- Remove spelling words.
+- Remove test code.
+
+[released]: https://github.com/Arisilon/shared-actions/compare/7.0.0..released
+[7.0.0]: https://github.com/Arisilon/shared-actions/compare/6.0.0..7.0.0
+[6.0.0]: https://github.com/Arisilon/shared-actions/compare/v5.0.2..6.0.0
+[5.0.2]: https://github.com/Arisilon/shared-actions/compare/v5.0.1..v5.0.2
+[5.0.1]: https://github.com/Arisilon/shared-actions/compare/v5.0.0..v5.0.1
+[5.0.0]: https://github.com/Arisilon/shared-actions/compare/v4.2.2..v5.0.0
+[4.2.2]: https://github.com/Arisilon/shared-actions/compare/v4.2.1..v4.2.2
+[4.2.1]: https://github.com/Arisilon/shared-actions/compare/v4.2.0..v4.2.1
+[4.2.0]: https://github.com/Arisilon/shared-actions/compare/v4.1.0..v4.2.0
+[4.1.0]: https://github.com/Arisilon/shared-actions/compare/v4.0.1..v4.1.0
+[4.0.1]: https://github.com/Arisilon/shared-actions/compare/v4.0.0..v4.0.1
+[4.0.0]: https://github.com/Arisilon/shared-actions/compare/v3.0.0..v4.0.0
+[3.0.0]: https://github.com/Arisilon/shared-actions/compare/v2.2.1..v3.0.0
+[2.2.1]: https://github.com/Arisilon/shared-actions/compare/v2.2.0..v2.2.1
+[2.2.0]: https://github.com/Arisilon/shared-actions/compare/v2.1.0..v2.2.0
+[2.1.0]: https://github.com/Arisilon/shared-actions/compare/v2.0.0..v2.1.0
+[2.0.0]: https://github.com/Arisilon/shared-actions/compare/v1.0.1..v2.0.0
+[1.0.1]: https://github.com/Arisilon/shared-actions/compare/v1.0.0..v1.0.1
+[1.0.0]: https://github.com/Arisilon/shared-actions/tree/v1.0.0
+
+<!-- generated by git-cliff -->

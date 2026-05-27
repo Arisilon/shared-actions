@@ -1,0 +1,17 @@
+name: Update Changelog
+
+on:
+  push:
+    paths-ignore:
+      - CHANGELOG.md
+
+permissions:
+  contents: write
+
+jobs:
+  update-changelog:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Changelog
+        uses: arisilon/shared-actions/.github/actions/update-changelog@main

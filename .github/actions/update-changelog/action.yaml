@@ -1,0 +1,37 @@
+name: Update Changelog
+description: Automatically update the CHANGELOG.md file using git-cliff
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Install Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    - name: Install git-cliff
+      shell: bash
+      run: cargo install git-cliff --locked
+
+    - name: Generate changelog
+      shell: bash
+      run: git-cliff --config cliff.toml --output CHANGELOG.md
+
+    - name: Commit and push changelog update
+      shell: bash
+      run: |
+        if ! git diff --quiet -- CHANGELOG.md; then
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "chore: update CHANGELOG.md"
+          git push
+        else
+          echo "CHANGELOG.md is already up to date."
+        fi
