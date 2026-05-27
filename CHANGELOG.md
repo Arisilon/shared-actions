@@ -14,8 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Implement change log automation. (GitHub #26)
+- Fix release tag parsing.
+- Merge branch 'main' of github.com:Arisilon/shared-actions
 
-## [7.0.1] - 2026-05-25
+## ## [7.0.1] - 2026-05-25
 
 ### Changed
 
@@ -296,7 +298,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove test code.
 
 [unreleased]: https://github.com/Arisilon/shared-actions/compare/released..HEAD
-[released]: https://github.com/Arisilon/shared-actions/compare/7.0.0..released
+## [7.0.1]: https://github.com/Arisilon/shared-actions/compare/7.0.0..released
 [7.0.0]: https://github.com/Arisilon/shared-actions/compare/6.0.0..7.0.0
 [6.0.0]: https://github.com/Arisilon/shared-actions/compare/v5.0.2..6.0.0
 [5.0.2]: https://github.com/Arisilon/shared-actions/compare/v5.0.1..v5.0.2
