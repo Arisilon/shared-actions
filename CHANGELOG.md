@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update this change log on release. (GitHub #26)
 - Fix fetch-depth on new update-changelog action. (GitHub #26)
 - Need fetch-depth=0 for update-changelog. (GitHub #26)
+- Install git-cliff from requirements.txt file. (GitHub #26)
 
 ## [7.0.1] - 2026-05-25
 
