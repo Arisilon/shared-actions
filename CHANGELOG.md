@@ -16,7 +16,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Implement change log automation. (GitHub #26)
 - Fix release tag parsing.
-- Merge branch 'main' of github.com:Arisilon/shared-actions
 - Update this change log on release. (GitHub #26)
 
 ## [7.0.1] - 2026-05-25
@@ -137,7 +136,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix checkout with no token.
 - Fix syntax.
 - Improve argument handling.
-- Merge branch 'main' of github.com:Arisilon/shared-actions
 - Fix job name.
 - Set permissions at calling workflow.
 - Use release environment for rc_release.
@@ -202,7 +200,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed Vjer install on Windows. (GitHub #8)
 - Update README.md
-- Merge branch 'main' of github.com:Arisilon/shared-actions
 - Fix conditional logic.
 - Need quotes around variables.
 - Update CHANGELOG.md.
