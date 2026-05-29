@@ -62,6 +62,7 @@ filter_unconventional = false
 commit_parsers = [
     { message = "\\[skip(?: |-)ci\\]", skip = true },
     { message = "\\[skip(?: |-)cl\\]", skip = true },
+    { message = "^Merge branch", skip = true },
     { message = "^[a|A]dd", group = "Added" },
     { message = "^[s|S]upport", group = "Added" },
     { message = "^[r|R]emove", group = "Removed" },

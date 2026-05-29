@@ -26,6 +26,9 @@ inputs:
   python-version:
     description: The Python version to use
     default: "3.14"
+  skip-artifact-download:
+    description: If artifact download steps should be skipped
+    default: "false"
   vjer-docker-push:
     description: If a build should push to DockerHub
     default: "false"
@@ -53,7 +56,7 @@ runs:
         token: ${{ inputs.enable-git-commit }}
 
     - name: Download artifacts
-      if: inputs.action == 'pre_release' || inputs.action == 'release'
+      if: (inputs.action == 'pre_release' || inputs.action == 'release') && (inputs.skip-artifact-download != 'true')
       uses: actions/download-artifact@v8
       with:
         name: artifacts
