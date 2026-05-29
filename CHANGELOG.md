@@ -10,12 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add support for updating a release tag to the latest version.
+- Add changelog automation support to the Python CI/CD workflow. (GitHub #26)
 
 ### Changed
 
 - Implement change log automation. (GitHub #26)
 - Fix release tag parsing.
 - Merge branch 'main' of github.com:Arisilon/shared-actions
+- Update this change log on release. (GitHub #26)
 
 ## [7.0.1] - 2026-05-25
 
