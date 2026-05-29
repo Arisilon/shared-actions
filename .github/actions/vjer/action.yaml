@@ -50,7 +50,7 @@ runs:
       uses: actions/checkout@v6
 
     - name: Checkout source
-      if: inputs.enable-git-commit != ''
+      if: inputs.enable-git-commit == ''
       uses: actions/checkout@v6
       with:
         token: ${{ inputs.enable-git-commit }}
