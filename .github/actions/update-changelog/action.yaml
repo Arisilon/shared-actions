@@ -24,7 +24,7 @@ runs:
 
     - name: Install git-cliff
       shell: bash
-      run: pip install git-cliff
+      run: pip install -r requirements.txt
 
     - name: Generate changelog
       shell: bash
