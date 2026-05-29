@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implement change log automation. (GitHub #26)
 - Fix release tag parsing.
 - Update this change log on release. (GitHub #26)
+- Fix fetch-depth on new update-changelog action. (GitHub #26)
+- Need fetch-depth=0 for update-changelog. (GitHub #26)
 
 ## [7.0.1] - 2026-05-25
 
@@ -296,8 +298,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove spelling words.
 - Remove test code.
 
-[unreleased]: https://github.com/Arisilon/shared-actions/compare/released..HEAD
-[7.0.1]: https://github.com/Arisilon/shared-actions/compare/7.0.0..released
+[unreleased]: https://github.com/Arisilon/shared-actions/compare/7.0.1..HEAD
+[7.0.1]: https://github.com/Arisilon/shared-actions/compare/7.0.0..7.0.1
 [7.0.0]: https://github.com/Arisilon/shared-actions/compare/6.0.0..7.0.0
 [6.0.0]: https://github.com/Arisilon/shared-actions/compare/v5.0.2..6.0.0
 [5.0.2]: https://github.com/Arisilon/shared-actions/compare/v5.0.1..v5.0.2
