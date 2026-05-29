@@ -15,7 +15,7 @@ jobs:
     if: (github.ref_name == 'main') || startsWith(github.ref_name, 'release/')
     runs-on: ubuntu-latest
     steps:
-      - name: Run Vjer release
+      - name: Run Vjer release action
         uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: release
