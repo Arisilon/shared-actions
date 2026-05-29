@@ -16,6 +16,13 @@ runs:
         fetch-depth: 0
         token: ${{ inputs.git-commit-token }}
 
+    - name: Sync branch with remote
+      shell: bash
+      run: |
+        branch="${GITHUB_REF_NAME:-$(git symbolic-ref --short HEAD)}"
+        git fetch origin "$branch"
+        git pull --rebase origin "$branch"
+
     - name: Setup Python ${{ inputs.python-version }}
       uses: actions/setup-python@v6
       with:
@@ -44,9 +51,6 @@ runs:
         if ! git diff --quiet -- CHANGELOG.md; then
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          branch="${GITHUB_REF_NAME:-$(git symbolic-ref --short HEAD)}"
-          git fetch origin "$branch"
-          git pull --rebase origin "$branch"
           git add CHANGELOG.md
           git commit -m "chore: update CHANGELOG.md [skip cl]"
           git push
