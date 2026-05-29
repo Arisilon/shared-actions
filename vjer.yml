@@ -1,6 +1,6 @@
 project:
   name: shared-actions
-  version: 7.0.1
+  version: 7.1.0
 release:
   steps:
     - type: tag_source
