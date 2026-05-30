@@ -27,7 +27,6 @@ runs:
       uses: actions/setup-python@v6
       with:
         python-version: "3.14"
-        cache: "pip"
 
     - name: Install git-cliff
       shell: bash
