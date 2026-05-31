@@ -12,7 +12,7 @@ on:
       test-python-versions:
         type: string
         default: '["3.14"]'
-      use-changelog-automation:
+      update-changelog:
         type: boolean
         default: false
       vjer-local:
@@ -108,6 +108,16 @@ jobs:
         os: ${{ fromJSON(inputs.test-os-list) }}
         python-version: ${{ fromJSON(inputs.test-python-versions) }}
 
+  update-changelog:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.update-changelog && (github.actor != 'github-actions[bot]') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/')) }}
+    needs: install-test
+    steps:
+      - name: Update Changelog
+        uses: arisilon/shared-actions/.github/actions/update-changelog@main
+        with:
+          git-commit-token: ${{ secrets.RELEASE_TOKEN }}
+
   pre_release:
     if: (github.event_name != 'pull_request') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/') || startsWith(github.ref_name, 'feature/'))
     needs: install-test
@@ -165,7 +175,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Update Changelog
-        if: inputs.use-changelog-automation
+        if: inputs.update-changelog
         uses: arisilon/shared-actions/.github/actions/update-changelog@main
         with:
           git-commit-token: ${{ secrets.RELEASE_TOKEN }}
