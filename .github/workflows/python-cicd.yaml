@@ -39,7 +39,7 @@ jobs:
         python-version: ${{ fromJSON(inputs.test-python-versions) }}
     steps:
       - name: Run Vjer test
-        uses: arisilon/shared-actions/.github/actions/vjer@stable
+        uses: arisilon/shared-actions/.github/actions/vjer@released
         with:
           action: test
           os: ${{ matrix.os }}
@@ -85,7 +85,7 @@ jobs:
     needs: test
     steps:
       - name: Run Vjer build
-        uses: arisilon/shared-actions/.github/actions/vjer@stable
+        uses: arisilon/shared-actions/.github/actions/vjer@released
         with:
           action: build
           os: ubuntu-latest
@@ -114,7 +114,7 @@ jobs:
     needs: install-test
     steps:
       - name: Update Changelog
-        uses: arisilon/shared-actions/.github/actions/update-changelog@stable
+        uses: arisilon/shared-actions/.github/actions/update-changelog@released
         with:
           git-commit-token: ${{ secrets.RELEASE_TOKEN }}
 
@@ -126,7 +126,7 @@ jobs:
     steps:
       - name: Run Vjer pre_release
         if: ${{ !inputs.skip-pypi-test }}
-        uses: arisilon/shared-actions/.github/actions/vjer@stable
+        uses: arisilon/shared-actions/.github/actions/vjer@released
         with:
           action: pre_release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
@@ -143,7 +143,7 @@ jobs:
     environment: rc_release
     steps:
       - name: Run Vjer rc_release
-        uses: arisilon/shared-actions/.github/actions/vjer@stable
+        uses: arisilon/shared-actions/.github/actions/vjer@released
         with:
           action: pre_release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
@@ -162,7 +162,7 @@ jobs:
     environment: release
     steps:
       - name: Run Vjer release
-        uses: arisilon/shared-actions/.github/actions/vjer@stable
+        uses: arisilon/shared-actions/.github/actions/vjer@released
         with:
           action: release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
@@ -176,7 +176,7 @@ jobs:
 
       - name: Update Changelog
         if: inputs.update-changelog
-        uses: arisilon/shared-actions/.github/actions/update-changelog@stable
+        uses: arisilon/shared-actions/.github/actions/update-changelog@released
         with:
           git-commit-token: ${{ secrets.RELEASE_TOKEN }}
 
