@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add update-changelog to python-cicd workflow. (GitHub #29)
 
+### Changed
+
+- Don't run ci on change log update. (GitHub #29)
+
 ## [7.1.1] - 2026-05-30
 
 ### Changed
