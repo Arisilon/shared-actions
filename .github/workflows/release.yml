@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Vjer release action
-        uses: arisilon/shared-actions/.github/actions/vjer@main
+        uses: arisilon/shared-actions/.github/actions/vjer@stable
         with:
           action: release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
@@ -26,7 +26,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Update Changelog
-        uses: arisilon/shared-actions/.github/actions/update-changelog@main
+        uses: arisilon/shared-actions/.github/actions/update-changelog@stable
         with:
           git-commit-token: ${{ secrets.RELEASE_TOKEN }}
           fix-release-tag: "released"
