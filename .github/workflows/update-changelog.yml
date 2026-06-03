@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update Changelog
-        uses: arisilon/shared-actions/.github/actions/update-changelog@released
+        uses: arisilon/shared-actions/.github/actions/update-changelog@main
         with:
           git-commit-token: ${{ secrets.RELEASE_TOKEN }}
           fix-release-tag: "released"
