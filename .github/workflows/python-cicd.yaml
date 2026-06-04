@@ -33,8 +33,18 @@ env:
   UNIT_TEST_DIR: test_results
 
 jobs:
+  update-changelog:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.update-changelog && (github.actor != 'github-actions[bot]') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/')) }}
+    steps:
+      - name: Update Changelog
+        uses: arisilon/shared-actions/.github/actions/update-changelog@main
+        with:
+          git-commit-token: ${{ secrets.RELEASE_TOKEN }}
+
   test:
     runs-on: ${{ matrix.os }}
+    needs: update-changelog
     strategy:
       fail-fast: false
       matrix:
@@ -96,6 +106,14 @@ jobs:
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
 
+  build-docs:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.build-docs }}
+    needs: test
+    steps:
+      - name: Build Documentation
+        uses: arisilon/shared-actions/.github/actions/build-documentation@main
+
   install-test:
     needs: build
     uses: ./.github/workflows/install-test.yaml
@@ -111,23 +129,11 @@ jobs:
         os: ${{ fromJSON(inputs.test-os-list) }}
         python-version: ${{ fromJSON(inputs.test-python-versions) }}
 
-  update-documentation:
-    runs-on: ubuntu-latest
-    if: ${{ inputs.update-changelog && (github.actor != 'github-actions[bot]') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/')) }}
-    needs: install-test
-    steps:
-      - name: Update Changelog
-        uses: arisilon/shared-actions/.github/actions/update-changelog@main
-        with:
-          git-commit-token: ${{ secrets.RELEASE_TOKEN }}
-
-      - name: Build Documentation
-        if: inputs.build-docs
-        uses: arisilon/shared-actions/.github/actions/build-documentation@main
-
   pre_release:
     if: (github.event_name != 'pull_request') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/') || startsWith(github.ref_name, 'feature/'))
-    needs: install-test
+    needs:
+      - install-test
+      - build-docs
     runs-on: ubuntu-latest
     environment: pre_release
     steps:
