@@ -106,14 +106,6 @@ jobs:
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
 
-  build-docs:
-    runs-on: ubuntu-latest
-    if: ${{ inputs.build-docs }}
-    needs: test
-    steps:
-      - name: Build Documentation
-        uses: arisilon/shared-actions/.github/actions/build-documentation@main
-
   install-test:
     needs: build
     uses: ./.github/workflows/install-test.yaml
@@ -131,9 +123,7 @@ jobs:
 
   pre_release:
     if: (github.event_name != 'pull_request') && ((github.ref_name == 'main') || startsWith(github.ref_name, 'release/') || startsWith(github.ref_name, 'feature/'))
-    needs:
-      - install-test
-      - build-docs
+    needs: install-test
     runs-on: ubuntu-latest
     environment: pre_release
     steps:
