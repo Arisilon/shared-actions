@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Improve doc handling in Python CI/CD workflow. (GitHub #30)
 
+### Removed
+
+- Remove doc builds. Work will be done in Vjer. (GitHub #30)
+
 ## [7.2.0] - 2026-05-31
 
 ### Added
