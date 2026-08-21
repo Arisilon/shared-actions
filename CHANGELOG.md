@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add build-documentation action and call from python-cicd. (GitHub #30)
+- Add support for disabling the Python CI/CD release steps. (GitHb (#31)
 
 ### Changed
 
