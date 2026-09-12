@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Improve doc handling in Python CI/CD workflow. (GitHub #30)
+- Make the os input in vjer optional. (GitHub #32)
 
 ### Removed
 
