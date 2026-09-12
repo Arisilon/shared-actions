@@ -104,7 +104,6 @@ jobs:
         uses: arisilon/shared-actions/.github/actions/vjer@main
         with:
           action: build
-          os: ubuntu-latest
           pyproject-build: true
           vjer-local: ${{ inputs.vjer-local }}
           vjer-version: ${{ inputs.vjer-version }}
@@ -136,7 +135,6 @@ jobs:
         with:
           action: pre_release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
-          os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
           vjer-local: ${{ inputs.vjer-local }}
@@ -153,7 +151,6 @@ jobs:
         with:
           action: pre_release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
-          os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
           vjer-local: ${{ inputs.vjer-local }}
@@ -172,7 +169,6 @@ jobs:
         with:
           action: release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
-          os: ubuntu-latest
           pypi_token: ${{ secrets.PYPI_TOKEN }}
           pyproject-build: true
           vjer-local: ${{ inputs.vjer-local }}

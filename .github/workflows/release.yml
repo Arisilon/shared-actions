@@ -20,8 +20,7 @@ jobs:
         with:
           action: release
           enable-git-commit: ${{ secrets.RELEASE_TOKEN }}
-          os: ubuntu-latest
-          skip-artifact-download: "true"
+          skip-artifact-download: true
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -29,4 +28,4 @@ jobs:
         uses: arisilon/shared-actions/.github/actions/update-changelog@main
         with:
           git-commit-token: ${{ secrets.RELEASE_TOKEN }}
-          fix-release-tag: "released"
+          fix-release-tag: released
