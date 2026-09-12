@@ -6,9 +6,6 @@ inputs:
   action:
     description: The Vjer action to run
     required: true
-  os:
-    description: The OS to run the action on
-    required: true
   # optional inputs
   build-num:
     description: The build number to use for the action
@@ -19,6 +16,9 @@ inputs:
     description: The DockerHub username to use for the action
   enable-git-commit:
     description: Enable git commit for the action
+  os:
+    description: The OS to run the action on
+    default: ubuntu-latest
   pypi_token:
     description: The PyPi upload token
   pyproject-build:
