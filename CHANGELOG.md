@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Use new vjer os default.
+- Changed the default Python usage to 3.15. (GitHub #33)
 
 ## [7.3.0] - 2026-09-12
 
@@ -172,6 +173,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add environment access.
 - Added pass in of GitHub token during checkout. (GitHub #11)
 - Add Python CI/CD workflow.
 - Add rc_release.
@@ -211,7 +213,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add test action.
 - Add redirection.
 - Add use-pypi-test input to install test.
-- Add environment access.
 
 ### Changed
 
