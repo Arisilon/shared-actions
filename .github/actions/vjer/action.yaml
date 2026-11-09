@@ -25,7 +25,7 @@ inputs:
     description: If this is a pyproject project
   python-version:
     description: The Python version to use
-    default: "3.14"
+    default: "3.15"
   skip-artifact-download:
     description: If artifact download steps should be skipped
     default: "false"
