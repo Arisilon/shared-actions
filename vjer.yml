@@ -1,6 +1,6 @@
 project:
   name: shared-actions
-  version: 8.0.0
+  version: 8.0.1
 release:
   steps:
   - release_tag: released
